@@ -4,14 +4,17 @@ Feature: Ordering drinks
     Given Romeo who wants to create an Order
     When Juliet is declared as recipient
 
+  @ordering
   Scenario: Creating an empty order
     Then the order does not contain any drinks
 
+  @ordering
   Scenario: Adding a drink to an order
     When a "PepsaCola Zero" is added to the order
     Then the order contains 1 drink
-
-    Scenario: Checking the contents of an order
+ 
+  @ordering
+  Scenario: Checking the contents of an order
     When a "PepsaCoke Zero" is added to the order
         And a "DietCola Max" is added to the order
         And another "PepsaCoke Zero" is added to the order
@@ -19,7 +22,7 @@ Feature: Ordering drinks
         And the order contains 2 "PepsaCoke Zero"
         And the order contains 1 "DietCola Max"    
 
-
+    @payment
     Scenario: Paying the price
         Given the price of a "PepsaCoke Zero" being 2.75 dollars
             And the price of a "DietCola Max" being 2.55 dollars
