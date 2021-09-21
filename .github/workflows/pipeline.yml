@@ -9,7 +9,10 @@ jobs:
       - name: Pull the released image
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/re21
       - name: connect to the Heroku registry
-        run: docker login --username=_ --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
+        run: |
+          docker login --username=_ \
+                       --password=${{ secrets.HEROKU_API_KEY }} \
+                       registry.heroku.com
       - name: prepare the released image for deployment
         run: |
           docker tag ${{ secrets.DOCKER_USERNAME }}/re21 \
