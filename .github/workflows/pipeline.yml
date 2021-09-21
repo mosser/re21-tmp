@@ -11,7 +11,7 @@ jobs:
       - name: export the Heroku token for login purpose
         run: export HEROKU_API_TOKEN=${{ secrets.HEROKU_API_KEY }}
       - name: connect to the Heroku registry
-        run: heroku container:login
+        run: docker login --username=_ --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
       - name: prepare the released image for deployment
         run: docker tag ${{ secrets.DOCKER_USERNAME }}/re21 registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
       - name: push the image to heroku
