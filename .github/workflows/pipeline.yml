@@ -10,6 +10,8 @@ jobs:
         run: docker pull ${{ secrets.DOCKER_USERNAME }}/re21
       - name: export the Heroku token for login purpose
         run: export HEROKU_API_TOKEN=${{ secrets.HEROKU_API_KEY }}
+      - name: test
+        run: echo xxx$HEROKU_API_TOKEN
       - name: connect to the Heroku registry
         run: docker login --username=_ --password=${{ secrets.HEROKU_API_KEY }} registry.heroku.com
       - name: prepare the released image for deployment
