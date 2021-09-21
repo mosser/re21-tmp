@@ -4,7 +4,6 @@ on: [push]
 jobs:
   
   deploy-app:
-    needs: publish-image
     runs-on: ubuntu-latest
     steps:
       - name: Pull the released image
